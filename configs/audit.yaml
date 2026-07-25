@@ -1,0 +1,14 @@
+# Configuración de la auditoría en tres frentes
+attribution:
+  factor_model: ff5
+  robust_errors: newey-west
+
+leakage:
+  mask_tickers: true
+  mask_dates: true
+  seed: 7
+
+reproducibility:
+  n_runs: 10
+  base_seed: 100
+  cv_threshold: 0.25

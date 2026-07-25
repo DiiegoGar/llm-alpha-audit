@@ -1,0 +1,24 @@
+# Datos (no versionar datasets pesados)
+data/raw/
+data/processed/
+data/factors/*.csv
+results/*.json
+results/*.csv
+
+# Claves API — NUNCA versionar
+.env
+*.key
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# SO / editor
+.DS_Store
+.vscode/
+.idea/

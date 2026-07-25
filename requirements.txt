@@ -1,0 +1,27 @@
+# Datos y análisis numérico
+pandas>=2.0
+numpy>=1.24
+yfinance>=0.2.40          # precios OHLCV gratuitos
+pandas-datareader>=0.10   # acceso a la Kenneth French Data Library
+
+# Modelos de factores y estadística
+statsmodels>=0.14         # regresión OLS con errores robustos (Newey-West)
+scipy>=1.11
+
+# Orquestación de agentes LLM
+# (elige el/los framework(s) que uses; ejemplo con API genérica)
+openai>=1.30              # o el cliente del proveedor que uses
+anthropic>=0.30           # opcional, si evalúas modelos de Anthropic
+pyyaml>=6.0               # configs de experimentos
+
+# Visualización
+matplotlib>=3.7
+seaborn>=0.13
+
+# Reproducibilidad y utilidades
+tqdm>=4.66
+python-dotenv>=1.0        # gestión de claves API vía .env (nunca hardcodear)
+
+# Desarrollo y tests
+pytest>=8.0
+jupyter>=1.0

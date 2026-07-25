@@ -1,0 +1,11 @@
+# Configuración de un agente a auditar (modo simulación)
+agent_name: ai_hedge_fund_baseline
+framework: ai-hedge-fund   # framework open-source subyacente
+llm_provider: openai       # proveedor del LLM
+llm_model: gpt-4o-mini     # modelo concreto (registrar SIEMPRE la versión)
+temperature: 0.0
+seed: 42
+universe: sp500
+start_date: "2023-01-01"
+end_date: "2024-12-31"
+mode: simulation           # NUNCA "live". Solo simulación sobre histórico.

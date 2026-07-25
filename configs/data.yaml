@@ -1,0 +1,8 @@
+# Configuración de descarga de datos
+universe: sp500          # componentes del S&P 500
+start_date: "2020-01-01"
+end_date: "2025-12-31"
+price_source: yahoo
+factor_model: ff5        # ff3 o ff5 (Fama-French 3 o 5 factores)
+out_prices: data/raw/
+out_factors: data/factors/
