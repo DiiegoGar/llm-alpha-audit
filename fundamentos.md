@@ -1,8 +1,7 @@
-# Fundamentos: lo que necesitas entender antes de programar
+# Fundamentos: forma simple de entender lo fundamental
 
-Esta guía cubre los tres conceptos sobre los que gira toda la auditoría. Está
-escrita para leerse de una sentada. Si entiendes esto, entiendes el 90% de tu
-propio proyecto — y puedes defenderlo en una entrevista.
+Esta pequeña guía cubre los tres conceptos sobre los que gira toda la auditoría. Está
+escrita de forma que asienta un onocimiento inciial que todos deberían tener. Una vez entendido, el proyecto queda cubierto en el 90%, sin necesidad de que el lector sea experto.
 
 ---
 
@@ -28,16 +27,11 @@ Esta es la distinción central de todas las finanzas de inversión:
   cuándo entrar y salir. Alpha es lo escaso, lo valioso, lo que justifica pagar
   a un gestor.
 
-**Por qué esto es el corazón de tu proyecto:** cuando un agente de trading LLM
+**Por qué esto es el corazón del proyecto:** cuando un agente de trading LLM
 "gana dinero", la pregunta que nadie se hace es si ese dinero es alpha (habilidad
-del agente) o beta (simplemente estaba largo en un mercado que subía). Tu
+del agente) o beta (simplemente estaba largo en un mercado que subía). Esta
 auditoría existe para separar las dos cosas. Si toda la ganancia del agente es
 beta, entonces el agente no aporta nada que un ETF de 5€ no diera ya.
-
-> **Analogía para la entrevista:** un surfista que llega lejos puede ser muy
-> bueno (alpha) o puede que simplemente venía una ola enorme que empujaba a todos
-> (beta). Para saber si es bueno, tienes que medir cuánto avanzó *más allá* de lo
-> que la ola explicaba.
 
 ---
 
@@ -50,12 +44,12 @@ tipos de "beta" de los que se creía.
 
 Los factores clásicos (modelo de 3 factores):
 
-1. **Mercado (Mkt-RF)** — el beta clásico: exposición al mercado en su conjunto,
+1. **Mercado (Mkt-RF)**. El beta clásico: exposición al mercado en su conjunto,
    por encima del tipo sin riesgo.
-2. **Tamaño (SMB, "Small Minus Big")** — históricamente, las empresas pequeñas
+2. **Tamaño (SMB, "Small Minus Big")**. Históricamente, las empresas pequeñas
    han rendido distinto a las grandes. Si tu cartera carga en small caps, parte
    de tu rentabilidad viene de este factor, no de tu genialidad.
-3. **Valor (HML, "High Minus Low")** — las empresas "baratas" (value) rinden
+3. **Valor (HML, "High Minus Low")**. Las empresas "baratas" (value) rinden
    distinto a las "caras" (growth). Otra fuente de rentabilidad sistemática.
 
 El modelo de 5 factores añade dos más: **rentabilidad operativa (RMW)** e
@@ -66,23 +60,21 @@ está cargada de acciones pequeñas y baratas en un año en que esos factores
 funcionaron. Eso no es alpha: es beta a factores conocidos, replicable por
 cualquiera sin talento especial.
 
-**Cómo lo usa tu proyecto:** coges la serie de rentabilidades de un agente LLM y
+**Cómo lo usamos en el proyecto:** coges la serie de rentabilidades de un agente LLM y
 la "explicas" con estos factores mediante una regresión:
 
 ```
 retorno_agente - tipo_sin_riesgo  =  α  +  β_mkt·Mercado  +  β_smb·SMB  +  β_hml·HML  +  ...  +  error
 ```
 
-Lo que buscas es el **α (el intercepto)**. Si tras controlar por todos los
-factores, α es estadísticamente indistinguible de cero, tu conclusión es
+Lo que se busca es el **α (el intercepto)**. Si tras controlar por todos los
+factores, α es estadísticamente indistinguible de cero, la conclusión es
 demoledora y honesta: *el agente no genera habilidad; su rendimiento es
 exposición a factores que cualquiera puede replicar.* Si α es positivo y
 significativo, el agente aporta algo real y eso también es un hallazgo valioso.
 
 > Los factores Fama-French son **públicos y gratuitos** en la Kenneth French Data
-> Library. No necesitas Bloomberg. Por eso tu proyecto es 100% reproducible.
-
----
+> Library. No necesitas Bloomberg.
 
 ## 3. Look-ahead bias y fuga de información: cómo un LLM "hace trampa"
 
@@ -101,7 +93,7 @@ la acción X subió en 2023 porque lo memorizó, no porque lo dedujera.
 Eso infla artificialmente su rendimiento y no se transfiere al futuro real, donde
 no hay nada memorizado que recordar.
 
-**Cómo lo caza tu proyecto (módulo `leakage/`):** evalúas al agente dos veces con
+**Cómo lo caza el proyecto (módulo `leakage/`):** se evalúa al agente dos veces con
 los mismos datos numéricos, pero:
 - una vez con los **nombres reales** (AAPL, fechas reales),
 - otra vez **anonimizado** (ASSET_07, fechas desplazadas).
@@ -127,16 +119,14 @@ buen resultado sin comprobar que es estable.
 
 ## Resumen en una frase
 
-Tu proyecto coge agentes de trading LLM y les hace tres preguntas que sus propios
+El proyecto coge agentes de trading LLM y les hace tres preguntas que sus propios
 autores no suelen hacerse: **(1)** ¿tu rentabilidad es alpha o solo beta a
 factores conocidos?, **(2)** ¿analizas de verdad o recuerdas lo que memorizaste?,
-y **(3)** ¿tus resultados se repiten o son ruido de una sola corrida? Responder
-esto con rigor y datos gratuitos es exactamente el tipo de escepticismo empírico
-que valora un banco de inversión o una business school.
+y **(3)** ¿tus resultados se repiten o son ruido de una sola ejecución?
 
 ---
 
-## Para profundizar (opcional, por tu cuenta)
+## Para profundizar (trabajo futuro anidado, dependiendo de los resultados)
 
 - Modelo de 3 factores: Fama & French (1993).
 - Modelo de 5 factores: Fama & French (2015).
